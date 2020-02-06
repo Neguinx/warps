@@ -1,0 +1,8 @@
+main: me.com.warps.Main
+name: Warps
+author: Neguinx
+version: 1.0
+commands:
+  warp:
+  delwarp:
+  setwarp:

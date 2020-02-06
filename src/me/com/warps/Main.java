@@ -6,6 +6,9 @@ import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.com.warps.Warp.Warp;
+import me.com.warps.commands.DelWarp;
+import me.com.warps.commands.SetWarp;
+import me.com.warps.commands.Warps;
 import me.com.warps.mysql.MySQL;
 
 
@@ -27,6 +30,8 @@ public class Main extends JavaPlugin{
 	@Override
 	public void onEnable() {
 		
+		instance = this;
+		
 		Senha = getConfig().getString("MySQL.Senha");
 		Usuario = getConfig().getString("MySQL.User");
 		Banco = getConfig().getString("MySQL.Database");
@@ -34,14 +39,14 @@ public class Main extends JavaPlugin{
 		Port = getConfig().getString("MySQL.Porta");
 		new MySQL().initBanco();
 		
-		instance = this;
-		
+		getCommand("warp").setExecutor(new Warps());
+		getCommand("delwarp").setExecutor(new DelWarp());
+		getCommand("setwarp").setExecutor(new SetWarp());
+	
 	}
 	
 	@Override
 	public void onDisable() {
 	}
 	
-	
-
 }
